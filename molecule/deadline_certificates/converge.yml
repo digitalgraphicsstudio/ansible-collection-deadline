@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: all
+  
+  collections:
+    - dg.deadline
+
+  roles:
+    - role: deadline_certificates

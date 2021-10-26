@@ -1,0 +1,14 @@
+---
+galaxy_info:
+  role_name: deadline_certificates
+  author: 'jonathan hansen'
+  description: 
+  company: digital graphics
+  license: "license (BSD, MIT)"
+  min_ansible_version: 2.1
+  platforms:
+    - name: EL
+      versions:
+        - 7
+  galaxy_tags: []
+dependencies: []

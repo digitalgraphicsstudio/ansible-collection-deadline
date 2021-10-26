@@ -1,0 +1,16 @@
+namespace: dg
+name: deadline
+version: 1.0.0
+readme: README.md
+authors:
+  - Jonathan Hansen (https://github.com/LittleVaaty)
+description: thinkbox deadline related role for ansible
+license_file: 'LICENSE'
+tags: []
+dependencies: {}
+repository: https://github.com/digitalgraphicsstudio/ansible-collection-deadline
+documentation: https://github.com/digitalgraphicsstudio/ansible-collection-deadline
+homepage: https://github.com/digitalgraphicsstudio/ansible-collection-deadline
+issues: https://github.com/digitalgraphicsstudio/ansible-collection-deadline
+build_ignore: []
+

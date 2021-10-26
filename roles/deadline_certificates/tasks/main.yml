@@ -1,0 +1,29 @@
+---
+# tasks file for deadline_certificates
+- name: get the repository of ssl script from thinkbox
+  git:
+    repo: "https://github.com/ThinkboxSoftware/SSLGeneration.git"
+    dest: "{{ deadline_cert_path }}"
+    version: "master"
+    update: true
+
+- name: Install requirement
+  pip:
+    requirements: "{{ deadline_cert_path }}/requirements.txt"
+
+- name: Generating a new CA
+  command: "{{ python_interpreter }} {{ deadline_cert_path }}/ssl_gen.py --ca --cert-org {{ deadline_cert_org }} --cert-ou {{ deadline_cert_ou }}"
+
+- name: Generate the server certificate
+  command: "{{ python_interpreter }} {{ deadline_cert_path }}/ssl_gen.py --server --cert-name {{ deadline_server_hostname }}"
+
+- name: Generate Pem server file
+  shell: 
+    cmd: 'cat {{ deadline_server_hostname }}.crt {{ deadline_server_hostname }}.key > {{ deadline_server_hostname }}.pem'
+    chdir: '{{ deadline_cert_path }}/keys'
+
+- name: Generate the client certificate(s)
+  command: "{{ python_interpreter }} {{ deadline_cert_path }}/ssl_gen.py --client --cert-name {{ deadline_certs_client }} --passphrase {{ deadline_certs_password }}"
+
+- name: Create a PKCS#12 container for use by Deadline clients
+  command: "{{ python_interpreter }} {{ deadline_cert_path }}/ssl_gen.py --pfx --cert-name {{ deadline_certs_client }} --passphrase {{ deadline_certs_password }}"

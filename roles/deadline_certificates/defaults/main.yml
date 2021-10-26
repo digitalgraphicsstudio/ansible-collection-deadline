@@ -1,0 +1,8 @@
+---
+# defaults file for deadline_certificates
+deadline_cert_path: "~/SSLGeneration"
+deadline_cert_org: "vaaty-corp"
+deadline_cert_ou: "vaaty-corp"
+deadline_certs_password: "password"
+deadline_certs_client: "deadline_client"
+python_interpreter: "python3"
